@@ -21,13 +21,9 @@ class InfoSpaceObjectViewController: UIViewController {
         dateLabel.text = spaceObject.date
         explanationLabel.text = spaceObject.explanation
         imageView.image = UIImage()
-        print("Координаты картинки: \(imageView.center.y)")
-        print("Координаты view: \(view.center)")
-        
         
         let spinner = showSpinner(in: imageView)
         showImage(spinner: spinner)
-        print("Координаты картинки: \(imageView.center)")
     }
 
     private func showSpinner(in view: UIImageView) -> UIActivityIndicatorView {

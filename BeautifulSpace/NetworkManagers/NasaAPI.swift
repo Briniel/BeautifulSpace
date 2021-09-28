@@ -5,8 +5,8 @@
 //  Created by Михаил Иванов on 24.09.2021.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
 class NasaAPI {
     typealias Handler = (Result<Any, NetworkError>) -> Void
@@ -15,8 +15,7 @@ class NasaAPI {
         case apod = "https://api.nasa.gov/planetary/apod?api_key=zRvA8ed1SJNn18RXbPMWjdX83eiq18JDsnJbk703&count=5"
     }
     
-    private init() {
-    }
+    private init() {}
     
     static let shared = NasaAPI()
     
@@ -38,27 +37,23 @@ class NasaAPI {
     
     func getSpaceImage(url: String, then handler: @escaping Handler) {
         DispatchQueue.global().async {
-        guard let url = URL(string: url) else {
-            handler(.failure(.badURL))
-            return
-        }
-        guard let imageData = try? Data(contentsOf: url) else {
-            handler(.failure(.errorConnect))
-            return
-        }
-            DispatchQueue.main.async {
-        handler(.success(imageData))
+            guard let url = URL(string: url) else {
+                handler(.failure(.badURL))
+                return
             }
-            
+            guard let imageData = try? Data(contentsOf: url) else {
+                handler(.failure(.errorConnect))
+                return
+            }
+            DispatchQueue.main.async {
+                handler(.success(imageData))
+            }
         }
-        
     }
 }
-
 
 enum NetworkError: Error {
     case badURL
     case errorForDecode
     case errorConnect
-    
 }

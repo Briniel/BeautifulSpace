@@ -9,7 +9,7 @@ import UIKit
 
 class SpaceObjectsTableViewController: UITableViewController {
     var objectsSpace: [SpaceObject] = []
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         getAPODs()
@@ -22,13 +22,15 @@ class SpaceObjectsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        var content = cell.defaultContentConfiguration()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SpaceObjectCell
         let objectSpace = objectsSpace[indexPath.row]
+        cell.configure(with: objectSpace)
 
-        content.text = objectSpace.title
-
-        cell.contentConfiguration = content
+//        content.text = objectSpace.title
+//        content.image = imagerCell
+//        content.imageProperties.cornerRadius = tableView.rowHeight / 2
+//
+//        cell.contentConfiguration = content
         return cell
     }
 
@@ -47,7 +49,7 @@ class SpaceObjectsTableViewController: UITableViewController {
 // MARK: - API connect
 
 extension SpaceObjectsTableViewController {
-    func getAPODs() {
+    private func getAPODs() {
         NasaAPI.shared.getSpaceObjects(url: .apod) { result in
             switch result {
                 case .success(let result):
@@ -59,3 +61,4 @@ extension SpaceObjectsTableViewController {
         }
     }
 }
+
