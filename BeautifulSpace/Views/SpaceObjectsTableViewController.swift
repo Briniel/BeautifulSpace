@@ -9,8 +9,7 @@ import UIKit
 
 class SpaceObjectsTableViewController: UITableViewController {
     var objectsSpace: [SpaceObject] = []
-    let nasaAPI = NasaAPI.self
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getAPODs()
@@ -49,13 +48,11 @@ class SpaceObjectsTableViewController: UITableViewController {
 
 extension SpaceObjectsTableViewController {
     func getAPODs() {
-        nasaAPI.shared.getSpaceObjects(url: .apod) { result in
+        NasaAPI.shared.getSpaceObjects(url: .apod) { result in
             switch result {
                 case .success(let result):
-                    DispatchQueue.main.async {
                         self.objectsSpace = result
                         self.tableView.reloadData()
-                    }
                 case .failure(let error):
                     print(error.localizedDescription)
             }

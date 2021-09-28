@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090BBB8BD9C7BEBE525B5F3A /* Pods_BeautifulSpace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDFA01C0EB8BEFF5E2BC85F /* Pods_BeautifulSpace.framework */; };
 		3E80784426FDCB5F00A89A5E /* NasaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E80784326FDCB5F00A89A5E /* NasaAPI.swift */; };
 		3E80784826FDD4BB00A89A5E /* SpaceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E80784726FDD4BB00A89A5E /* SpaceObject.swift */; };
 		3E80784C26FDF62500A89A5E /* SpaceObjectsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E80784B26FDF62500A89A5E /* SpaceObjectsTableViewController.swift */; };
@@ -30,6 +31,9 @@
 		3ECEB80926FD95B400053F0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3ECEB80C26FD95B400053F0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3ECEB80E26FD95B400053F0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68CD2A9DA475E2D64E6D757A /* Pods-BeautifulSpace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeautifulSpace.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeautifulSpace/Pods-BeautifulSpace.debug.xcconfig"; sourceTree = "<group>"; };
+		DD52DC55F2FAB03E10C3F032 /* Pods-BeautifulSpace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeautifulSpace.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeautifulSpace/Pods-BeautifulSpace.release.xcconfig"; sourceTree = "<group>"; };
+		DDDFA01C0EB8BEFF5E2BC85F /* Pods_BeautifulSpace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeautifulSpace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				090BBB8BD9C7BEBE525B5F3A /* Pods_BeautifulSpace.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +69,8 @@
 			children = (
 				3ECEB7FF26FD95A900053F0E /* BeautifulSpace */,
 				3ECEB7FE26FD95A900053F0E /* Products */,
+				CF3684567E99A945B86B369B /* Pods */,
+				9AF85D87B7D1F98FCDA38446 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -124,6 +131,23 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		9AF85D87B7D1F98FCDA38446 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DDDFA01C0EB8BEFF5E2BC85F /* Pods_BeautifulSpace.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CF3684567E99A945B86B369B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				68CD2A9DA475E2D64E6D757A /* Pods-BeautifulSpace.debug.xcconfig */,
+				DD52DC55F2FAB03E10C3F032 /* Pods-BeautifulSpace.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -131,9 +155,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3ECEB81126FD95B400053F0E /* Build configuration list for PBXNativeTarget "BeautifulSpace" */;
 			buildPhases = (
+				C4B3F7522354BBD40CC74950 /* [CP] Check Pods Manifest.lock */,
 				3ECEB7F926FD95A900053F0E /* Sources */,
 				3ECEB7FA26FD95A900053F0E /* Frameworks */,
 				3ECEB7FB26FD95A900053F0E /* Resources */,
+				2DBA6EDA70A6CFD5B756FADD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -188,6 +214,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2DBA6EDA70A6CFD5B756FADD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BeautifulSpace/Pods-BeautifulSpace-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BeautifulSpace/Pods-BeautifulSpace-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C4B3F7522354BBD40CC74950 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BeautifulSpace-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3ECEB7F926FD95A900053F0E /* Sources */ = {
@@ -343,6 +408,7 @@
 		};
 		3ECEB81226FD95B400053F0E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68CD2A9DA475E2D64E6D757A /* Pods-BeautifulSpace.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -362,6 +428,7 @@
 		};
 		3ECEB81326FD95B400053F0E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD52DC55F2FAB03E10C3F032 /* Pods-BeautifulSpace.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

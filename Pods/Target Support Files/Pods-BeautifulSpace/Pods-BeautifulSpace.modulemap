@@ -1,0 +1,6 @@
+framework module Pods_BeautifulSpace {
+  umbrella header "Pods-BeautifulSpace-umbrella.h"
+
+  export *
+  module * { export * }
+}
