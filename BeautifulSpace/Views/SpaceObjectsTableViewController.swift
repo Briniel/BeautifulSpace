@@ -51,8 +51,8 @@ extension SpaceObjectsTableViewController {
         NasaAPI.shared.getSpaceObjects(url: .apod) { result in
             switch result {
                 case .success(let result):
-                        self.objectsSpace = result
-                        self.tableView.reloadData()
+                    self.objectsSpace = result as! [SpaceObject]
+                    self.tableView.reloadData()
                 case .failure(let error):
                     print(error.localizedDescription)
             }

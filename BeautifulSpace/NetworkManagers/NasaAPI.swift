@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 class NasaAPI {
-    typealias Handler = (Result<[SpaceObject], NetworkError>) -> Void
+    typealias Handler = (Result<Any, NetworkError>) -> Void
     
     enum methodURL: String {
         case apod = "https://api.nasa.gov/planetary/apod?api_key=zRvA8ed1SJNn18RXbPMWjdX83eiq18JDsnJbk703&count=5"
@@ -34,6 +34,24 @@ class NasaAPI {
                         handler(.failure(.errorForDecode))
                 }
             }
+    }
+    
+    func getSpaceImage(url: String, then handler: @escaping Handler) {
+        DispatchQueue.global().async {
+        guard let url = URL(string: url) else {
+            handler(.failure(.badURL))
+            return
+        }
+        guard let imageData = try? Data(contentsOf: url) else {
+            handler(.failure(.errorConnect))
+            return
+        }
+            DispatchQueue.main.async {
+        handler(.success(imageData))
+            }
+            
+        }
+        
     }
 }
 

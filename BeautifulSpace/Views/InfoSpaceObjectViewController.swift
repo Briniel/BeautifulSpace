@@ -8,7 +8,7 @@
 import UIKit
 
 class InfoSpaceObjectViewController: UIViewController {
-    
+   
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var explanationLabel: UILabel!
@@ -21,26 +21,16 @@ class InfoSpaceObjectViewController: UIViewController {
         dateLabel.text = spaceObject.date
         explanationLabel.text = spaceObject.explanation
         imageView.image = UIImage()
-        print(imageView.center)
+        print("Координаты картинки: \(imageView.center.y)")
+        print("Координаты view: \(view.center)")
         
-        let por = showSpinner(in: imageView)
         
-        DispatchQueue.global().async {
-            guard let url = URL(string: self.spaceObject.hdurl ?? "") else {
-                return
-            }
-            guard let imageData = try? Data(contentsOf: url) else {
-                return
-            }
-            DispatchQueue.main.async {
-                self.imageView.image = UIImage(data: imageData)
-                print(self.imageView.center)
-                por.stopAnimating()
-            }
-        }
+        let spinner = showSpinner(in: imageView)
+        showImage(spinner: spinner)
+        print("Координаты картинки: \(imageView.center)")
     }
 
-    private func showSpinner(in view: UIView) -> UIActivityIndicatorView {
+    private func showSpinner(in view: UIImageView) -> UIActivityIndicatorView {
         let activityIndicator = UIActivityIndicatorView(style: .large)
         activityIndicator.color = .gray
         activityIndicator.startAnimating()
@@ -49,5 +39,17 @@ class InfoSpaceObjectViewController: UIViewController {
         
         view.addSubview(activityIndicator)
         return activityIndicator
+    }
+    
+    private func showImage(spinner: UIActivityIndicatorView) {
+        NasaAPI.shared.getSpaceImage(url: spaceObject.hdurl ?? "") { result in
+            switch result {
+                case .success(let value):
+                    self.imageView.image = UIImage(data: value as! Data)
+                    spinner.stopAnimating()
+                case .failure(let error):
+                    print(error)
+            }
+        }
     }
 }
